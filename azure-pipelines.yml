@@ -4,11 +4,21 @@ trigger:
 pool:
   vmImage: 'Ubuntu-16.04'
 
+variables:
+  imageName: 'pipelines-javascript-docker'
+
 steps:
 - task: Docker@2
-  displayName: Build and push an image to container registry
+  displayName: Build an image
   inputs:
-    command: buildAndPush
-    repository: $(imageRepository)
-    dockerfile: app/Dockerfile
-    containerRegistry: $(dockerRegistryServiceConnection)
+    repository: $(imageName)
+    command: build
+    Dockerfile: app/Dockerfile
+    
+- task: Docker@2
+  displayName: Push
+  inputs:
+    command: push
+    containerRegistry: bextencontainer
+    repository: $(imageName)
+    tags: latest
