@@ -1,11 +1,3 @@
-trigger:
-- main
-
-pool:
-  vmImage: 'Ubuntu-16.04'
-
-variables:
-  imageName: 'pipelines-javascript-docker'
 
 - stage: Build
   displayName: Build and push stage
