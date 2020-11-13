@@ -6,6 +6,7 @@ variables:
   imageRepository: 'pipelines-javascript-docker'
   vmImageName: 'Ubuntu-16.04'
 
+stages:
 - stage: Build
   displayName: Build and push stage
   jobs:  
